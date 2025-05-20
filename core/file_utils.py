@@ -39,6 +39,9 @@ class FileManager:
         self.ui.display_logo("start_logo")
 
         files = self.list_quiz_files()
+        if not files:
+            print("\033[91mNo quiz files found. Create one using the builder.\033[0m")
+            return None
 
         for number, file in enumerate(files, 1):
             print(f"\033[97m\033[01m{number}. \033[0m\033[093m{file}\033[0m")
