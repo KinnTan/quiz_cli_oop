@@ -26,6 +26,7 @@ class FileManager:
         filename = self.unique_filename()
         with open(filename, "w") as file:
             json.dump(data, file, indent=4)
+        return filename
 
     def load_quiz(self, filepath):
         with open(filepath, "r") as file:
