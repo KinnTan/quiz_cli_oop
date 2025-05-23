@@ -1,6 +1,8 @@
 import json
 
+# Validates quiz JSON files and their internal structure
 class Validator:
+    # Check if a given file is a readable JSON file
     def validate_json(self, filename):
         if not filename.endswith(".json"):
             return "\033[91mThat is not a JSON file. Please select a file with a .json extension.\033[0m"
@@ -8,8 +10,9 @@ class Validator:
             json.load(open(filename))
         except json.decoder.JSONDecodeError:  # Handle empty or invalid JSON
             return "\033[91mThat JSON file is empty or corrupted. Please select a different file.\033[0m"
-        return None
+        return None # File is valid
 
+    # Checks that the JSON quiz file has the expected structure
     def is_valid_quiz(self, data):
         for question_item in data:
             try:
@@ -28,5 +31,5 @@ class Validator:
                 try:
                     (question_item["choices"][choice_letter])
                 except KeyError:
-                    return False
+                    return False # Any missing key means invalid quiz structure
         return True
