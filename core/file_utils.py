@@ -11,9 +11,7 @@ class FileManager:
 
     # Lists all quiz files in the current directory that end with .json
     def list_quiz_files(self):
-        for files in os.listdir():  # Iterate through all files in the current directory
-            if files.endswith('json'):  # Check if the file ends with .json
-                return files  # Return the filename
+        return [file for file in os.listdir() if file.endswith('.json')]
 
     # Ensures the saved file has a unique name (prevents overwriting)
     def unique_filename(self, base="quiz_data.json"):
